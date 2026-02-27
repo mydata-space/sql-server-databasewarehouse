@@ -1,0 +1,161 @@
+
+/*
+=========================================================================================
+Create Bronze Layers Tables
+=========================================================================================
+
+Script Purpose:
+	This script creates bronze layers tables. data is sourced from crm and erp system.   
+
+WARNING:
+	Running this script will drop the entire 'Table' in database if it exists.
+	All the tables will be permanently deleted. Proceed with caution and ensure you have 
+	proper backups before running this script.
+
+*/
+
+-- --------------------------------------------------------------------------------------
+-- Create bronze layer tables 'australia, canada, germany, japan, mexico and nigeria' from CRM source
+-- --------------------------------------------------------------------------------------
+
+-- Create table bronze.crm_australia
+IF OBJECT_ID('bronze.crm_australia', 'U') IS NOT NULL
+	DROP TABLE bronze.crm_australia; 
+CREATE TABLE bronze.crm_australia
+	(
+	productid INT,
+	date DATE,
+	zip INT,
+	units INT,
+	revenue DECIMAL(10,2),
+	country NVARCHAR(50)
+	);
+
+-- Create table bronze.crm_canada
+IF OBJECT_ID('bronze.crm_canada', 'U') IS NOT NULL
+	DROP TABLE bronze.crm_canada; 
+CREATE TABLE bronze.crm_canada
+	(
+	productid INT,
+	date DATE,
+	zip NVARCHAR(50),
+	units INT,
+	revenue DECIMAL(10,2),
+	country NVARCHAR(50)
+	);
+
+-- Create table bronze.crm_germany
+IF OBJECT_ID('bronze.crm_germany', 'U') IS NOT NULL
+	DROP TABLE bronze.crm_germany; 
+CREATE TABLE bronze.crm_germany
+	(
+	productid INT,
+	date DATE,
+	zip INT,
+	units INT,
+	revenue DECIMAL(10,2),
+	country NVARCHAR(50)
+	);
+
+-- Create table bronze.crm_japan
+IF OBJECT_ID('bronze.crm_japan', 'U') IS NOT NULL
+	DROP TABLE bronze.crm_japan; 
+CREATE TABLE bronze.crm_japan
+	(
+	productid INT,
+	date DATE,
+	zip NVARCHAR(50),
+	units INT,
+	revenue DECIMAL(10,2),
+	country NVARCHAR(50)
+	);
+
+-- Create table bronze.crm_mexico
+IF OBJECT_ID('bronze.crm_mexico', 'U') IS NOT NULL
+	DROP TABLE bronze.crm_mexico; 
+CREATE TABLE bronze.crm_mexico
+	(
+	productid INT,
+	date DATE,
+	zip INT,
+	units INT,
+	revenue DECIMAL(10,2),
+	country NVARCHAR(50)
+	);
+
+-- Create table bronze.crm_nigeria
+IF OBJECT_ID('bronze.crm_nigeria', 'U') IS NOT NULL
+	DROP TABLE bronze.crm_nigeria; 
+CREATE TABLE bronze.crm_nigeria
+	(
+	productid INT,
+	date DATE,
+	zip INT,
+	units INT,
+	revenue DECIMAL(10,2),
+	country NVARCHAR(50)
+	);
+
+-- --------------------------------------------------------------------------------------
+-- Create bronze layer tables 'geo, manufacturer, product and sales' from ERP source
+-- --------------------------------------------------------------------------------------
+
+-- Create table bronze.erp_geo
+IF OBJECT_ID('bronze.erp_geo', 'U') IS NOT NULL
+	DROP TABLE bronze.erp_geo;
+CREATE TABLE bronze.erp_geo
+	(
+	zip NVARCHAR(50),
+	city NVARCHAR(50),
+	state NVARCHAR(50),
+	region NVARCHAR(50),
+	district NVARCHAR(50),
+	country NVARCHAR(50),
+	);
+
+-- Create table bronze.erp_manufacturer
+IF OBJECT_ID('bronze.erp_manufacturer', 'U') IS NOT NULL
+	DROP TABLE bronze.erp_manufacturer; 
+CREATE TABLE bronze.erp_manufacturer
+	(
+	column1 NVARCHAR(500),
+	column2 NVARCHAR(500),
+	column3 NVARCHAR(500),
+	column4 NVARCHAR(500),
+	column5 NVARCHAR(500),
+	column6 NVARCHAR(500),
+	column7 NVARCHAR(500),
+	column8 NVARCHAR(500),
+	column9 NVARCHAR(500),
+	column10 NVARCHAR(500),
+	column11 NVARCHAR(500),
+	column12 NVARCHAR(500),
+	column13 NVARCHAR(500),
+	column14 NVARCHAR(500),
+	column15 NVARCHAR(500)
+	);
+
+-- Create table bronze.erp_product
+IF OBJECT_ID('bronze.erp_product', 'U') IS NOT NULL
+	DROP TABLE bronze.erp_product;
+CREATE TABLE bronze.erp_product
+	(
+	productid INT,
+	product NVARCHAR(50),
+	category NVARCHAR(50),
+	manufacturerid NVARCHAR(50),
+	price NVARCHAR(50)
+	);
+
+-- Create table bronze.erp_sales
+IF OBJECT_ID('bronze.erp_sales', 'U') IS NOT NULL
+	DROP TABLE bronze.erp_sales;
+CREATE TABLE bronze.erp_sales
+	(
+	zip INT,
+	city NVARCHAR(50),
+	state NVARCHAR(50),
+	region NVARCHAR(50),
+	district NVARCHAR(50),
+	country NVARCHAR(50),
+	);
